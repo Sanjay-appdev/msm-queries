@@ -1,0 +1,20 @@
+<h1>List of all actors</h1>
+
+ <table border="1">
+
+ <%  @list_of_directors.all.each do |kps| %>     
+  <tr>
+  <td><%= kps.id %></td>
+  <td>
+  <img src="http://robohash.org/<%= kps.name %>">
+  </td>
+  <td><%= kps.name %></td>
+  <td><%= kps.dob %></td>
+  <td>
+     <a href="/directors/<%= kps.id  %>">
+        Show details</a>
+        </a>
+        </td>
+  </tr>
+ <% end %>
+ </table>
