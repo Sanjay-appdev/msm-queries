@@ -2,7 +2,7 @@
 
  <table border="1">
 
- <%  @list_of_directors.all.each do |kps| %>     
+ <%   @list_of_actor.all.each do |kps| %>     
   <tr>
   <td><%= kps.id %></td>
   <td>
@@ -11,7 +11,7 @@
   <td><%= kps.name %></td>
   <td><%= kps.dob %></td>
   <td>
-     <a href="/directors/<%= kps.id  %>">
+     <a href="/actors/<%= kps.id  %>">
         Show details</a>
         </a>
         </td>

@@ -1,0 +1,121 @@
+ <h1>
+  Actor <%= @actors_id %> details
+</h1>
+
+<a href="/actors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+&nbsp;|&nbsp;
+
+<a href="/delete_actor/504" class="btn btn-block btn-outline-secondary">
+  Delete actor
+  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%# @actors_id.title %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+     <%= @actors_id.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @actors_id.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="http://robohash.org/<%= @actors_id.image %>?set=set10">
+  </dd>
+
+  <dt>
+    Director
+  </dt>
+  <dd>
+    <% @list_of_actor.all.each do |tre| %>
+   <% if @actor_id.director_id == tre.id %>
+    <td> <%= tre.name %>,</td>
+    <% else %>
+      <% end %>
+    <% end %>
+    <% id = 0 %>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words @actor_id.updated_at %> ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      <%= @list_of_movies.Title %>
+      </th>
+
+    <th>
+      <%= @list_of_movies.year %> 
+    </th>
+
+    <th>
+      <%= @list_of_movies.Director %> 
+    </th>
+
+    <th>
+      <%= @list_of_movies.Character name %>
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+    <tr>
+      <td>
+        The Shawshank Redemption
+      </td>
+
+      <td>
+      <%= @list_of_movies.year %> 
+      </td>
+
+      <td>
+
+
+          Frank Darabont
+      </td>
+
+      <td>
+        Andy Dufresne
+      </td>
+
+      <td>
+        <a href="/movies/1">
+          Show details
+        </a>
+      </td>
+    </tr>
+</table>
+
+  </body>
+</html>

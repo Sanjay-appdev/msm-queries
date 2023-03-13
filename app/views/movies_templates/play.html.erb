@@ -11,10 +11,10 @@
   </td>
   <td><%= dsf.title %></td>
   <td><%= dsf.year %></td>
-     <% id = mov.director_id %>
+     <% id = dsf.director_id %>
      <% @list_of_directors.all.each do |ert| %>
-         <% if id == dir.id%>
-         <td> <%= dir.name %> <td>
+         <% if id == ert.id%>
+         <td> <%= ert.name %> <td>
          <%else%>
          <%end%>
          <%end%>
