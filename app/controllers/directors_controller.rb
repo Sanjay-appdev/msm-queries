@@ -57,12 +57,13 @@ class DirectorsController < ApplicationController
 
   def actor_details
     actors_id = params.fetch("actor_id")
-    @actors_id = Actor.where({:id =>actors_id}).at(0)
+    @actor_id = Actor.where({:id =>actors_id}).at(0)
      @list_of_character = Character.all
      @list_of_movies = Movie.where({:id=> actors_id}).at(0)
 
      @list_of_director = Director.all
      @list_of_actor = Actor.all
+     
 
     render({ :template =>"misc_templates/actors_details.html.erb"})
 

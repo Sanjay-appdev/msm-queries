@@ -1,5 +1,5 @@
  <h1>
-  Actor <%= @actors_id %> details
+  Actor <%= @actor_id.id %> details
 </h1>
 
 <a href="/actors" class="btn btn-block btn-outline-secondary">
@@ -20,47 +20,41 @@
     Title
   </dt>
   <dd>
-    <%# @actors_id.title %>
+    <%= @actor_id.name %>
   </dd>
 
   <dt>
     Dob
   </dt>
   <dd>
-     <%= @actors_id.dob %>
+     <%= @actor_id.dob %>
   </dd>
 
   <dt>
     Bio
   </dt>
   <dd>
-    <%= @actors_id.bio %>
+    <%= @actor_id.bio %>
   </dd>
 
   <dt>
     Image
   </dt>
   <dd>
-    <img src="http://robohash.org/<%= @actors_id.image %>?set=set10">
+    <img src="http://robohash.org/<%= @actor_id.name %>?set=set10">
   </dd>
 
   <dt>
-    Director
+    created at
   </dt>
   <dd>
-    <% @list_of_actor.all.each do |tre| %>
-   <% if @actor_id.director_id == tre.id %>
-    <td> <%= tre.name %>,</td>
-    <% else %>
-      <% end %>
-    <% end %>
-    <% id = 0 %>
-
+  <%= time_ago_in_words(@actor_id.created_at) %> ago
+  <dd>
   <dt>
-    Updated at
+    updated at
   </dt>
   <dd>
-    <%= time_ago_in_words @actor_id.updated_at %> ago
+    <%= time_ago_in_words(@actor_id.updated_at) %> ago
   </dd>
 </dl>
 
@@ -70,52 +64,50 @@
 
 <table border="1">
   <tr>
-    <th>
-      <%= @list_of_movies.Title %>
-      </th>
 
-    <th>
-      <%= @list_of_movies.year %> 
-    </th>
+  <th>
+  Title
+  </th>
+  <th>
+  year
+  </th>
+  <th>
+  Director
+  </th>
+  <th>
+  Character Name
+  </th>
+   <th>
+   </th>
+   </tr>
+   <% @list_of_character.all.each do |char| %>
+   <% movie = Movie.where(:id=> char.movie_id).first %>
+               
+    <% if char.actor_id == @actor_id.id %>
+   <tr>
+   <td>
+   <%= movie.title %>
+   </td>
+   <td>
+   <%= movie.year%>
+   </td>
+   <td>
 
-    <th>
-      <%= @list_of_movies.Director %> 
-    </th>
+   <% dir=Director.where(:id=>movie.director_id).first %>
+   <%= dir.name%>
+   </td>
+   <td>
+   <%= char.name %>
+   </td>
+   <td>
+    <a href="/movies/<%= char.movie_id %>">
+        show details
+     </a>
+     </td>
+     </tr>
+     <% end %>
+     <% end %>
+     </table>
 
-    <th>
-      <%= @list_of_movies.Character name %>
-    </th>
-
-    <th>
-    </th>
-  </tr>
-
-    <tr>
-      <td>
-        The Shawshank Redemption
-      </td>
-
-      <td>
-      <%= @list_of_movies.year %> 
-      </td>
-
-      <td>
-
-
-          Frank Darabont
-      </td>
-
-      <td>
-        Andy Dufresne
-      </td>
-
-      <td>
-        <a href="/movies/1">
-          Show details
-        </a>
-      </td>
-    </tr>
-</table>
-
-  </body>
-</html>
+  
+  

@@ -76,7 +76,7 @@
     <% d = Director.where({ :id=> a_film.director_id }).at(0) %>
     <%= d.name %>
     </td>
-      <a href="">
+      <a href="/movies/<%= a_film.id %>">
           show details 
           </a>
     </tr>
